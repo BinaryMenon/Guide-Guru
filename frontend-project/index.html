@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelPulse Goa - Your Complete Travel Companion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="stylee.css">
+    <style>
+        /* Add all your CSS styles from the original index.html here */
+        /* For brevity, I'm including just the essential styles */
+   
+        /* Add remaining styles from your original index.html */
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Guide Guru</div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="hotel.html"><i class="fas fa-hotel"></i> Hotels</a></li>
+                <li><a href="flight.html"><i class="fas fa-plane"></i> Flights</a></li>
+               <li><a href="buses.html"><i class="fas fa-bus"></i> Buses</a></li>
+               <li><a href="explore.html"><i class="fas fa-binoculars"></i> Explore</a></li>
+                <li><a href="cars.html"><i class="fas fa-car"></i> Cars Rental</a></li>
+                <li><a href="bikes.html"><i class="fas fa-motorcycle"></i> Bikes Rental</a></li>
+                <li><a href="Train.html"><i class="fas fa-train"></i> Trains</a></li>
+            </ul>
+            <div class="user-nav">
+                <a href="#" id="logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Discover the Magic </h1>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">Your complete travel solution - From stay to experiences</p>
+            <div class="search-box animate__animated animate__fadeInUp animate__delay-1s">
+                <form class="search-form" onsubmit="return goToDestination(event)">
+                    <div class="input-group">
+                        <input type="text" id="destinationInput" placeholder="Where to? (Goa, Delhi, Pondicherry...)" list="destinations">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <datalist id="destinations">
+                            <option value="Goa">
+                            <option value="Delhi">
+                            <option value="Pondicherry">
+                            <option value="Ahmedabad">   
+                        </datalist>
+                    </div>
+                    <button type="submit">Search <i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+   <!-- Services Section -->
+    <section class="services">
+        <div class="service-card animate__animated animate__fadeInLeft">
+            <i class="fas fa-hotel"></i>
+            <h3>500+ Hotels</h3>
+            <p>Luxury to budget stays</p>
+        </div>
+        <div class="service-card animate__animated animate__fadeInLeft animate__delay-1s" onclick="window.location.href='buses.html'">
+            <i class="fas fa-bus"></i>
+            <h3>Intercity Buses</h3>
+            <p>AC & Non-AC options</p>
+        </div>
+        <div class="service-card animate__animated animate__fadeInRight animate__delay-1s">
+            <i class="fas fa-plane"></i>
+            <h3>Flight Bookings</h3>
+            <p>Best price guarantee</p>
+        </div>
+        <div class="service-card animate__animated animate__fadeInRight">
+            <i class="fas fa-car"></i>
+            <h3>Car Rentals</h3>
+            <p>Self-drive & chauffeur</p>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section class="explore-section">
+        <h2 class="animate__animated animate__fadeIn">Explore Goa's Highlights</h2>
+        <div class="explore-grid">
+            <div class="explore-card animate__animated animate__fadeInUp">
+                <div class="explore-image-container">
+                    <img src="images/res.jpg" alt="Goa Beach Resorts" class="explore-image">
+                </div>
+                <div class="explore-content">
+                    <h3>Beach Resorts</h3>
+                    <p>Starting ₹1999/night</p>
+                    <a href="#" class="explore-btn">Explore More</a>
+                </div>
+            </div>
+            <div class="explore-card animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="explore-image-container">
+                    <img src="images/his.jpg" alt="Goa Historical Sites" class="explore-image">
+                </div>
+                <div class="explore-content">
+                    <h3>Historical Sites</h3>
+                    <p>Best architectures</p>
+                    <a href="#" class="explore-btn">Explore More</a>
+                </div>
+            </div>
+            <div class="explore-card animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="explore-image-container">
+                    <img src="images/food.jpg" alt="Goan Cuisine" class="explore-image">
+                </div>
+                <div class="explore-content">
+                    <h3>Local Cuisine</h3>
+                    <p>Best restaurants guide</p>
+                    <a href="#" class="explore-btn">Explore More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section class="safety">
+        <div class="safety-content">
+            <h2 class="animate__animated animate__fadeIn">Travel Safe in Goa</h2>
+            <div class="safety-features">
+                <div class="feature animate__animated animate__fadeInLeft">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Verified Partners</h4>
+                </div>
+                <div class="feature animate__animated animate__fadeIn">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4>24/7 Support</h4>
+                </div>
+                <div class="feature animate__animated animate__fadeInRight">
+                    <i class="fas fa-rupee-sign"></i>
+                    <h4>No Hidden Charges</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>TravelPulse Goa</h4>
+                <p>Your trusted travel companion</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check if user is logged in
+        window.onload = function() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            if (!isLoggedIn || isLoggedIn !== "true") {
+                window.location.href = "login.html";
+            }
+        };
+
+        // Logout functionality
+        document.getElementById("logout").addEventListener("click", function(e) {
+            e.preventDefault();
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "login.html";
+        });
+
+        function goToDestination(event) {
+            event.preventDefault();
+            
+            // Set navigation flag before redirecting
+            localStorage.setItem("navigatingToCity", "true");
+            localStorage.setItem("isLoggedIn", "true");
+            
+            const input = document.getElementById("destinationInput").value.toLowerCase();
+            
+            switch (input) {
+                case "goa":
+                    window.location.href = "goaaa.html";
+                    break;
+                case "delhi":
+                    window.location.href = "delhi.html";
+                    break;
+                case "pondicherry":
+                    window.location.href = "pondicherry.html";
+                    break;
+                case "ahmedabad":
+                    window.location.href = "ahmedabad.html";
+                    break;
+              
+                
+                default:
+                    alert("Destination not found!");
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html>

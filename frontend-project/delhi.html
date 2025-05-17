@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi - Historic Capital | Guide Guru</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="delhi.css">
+    
+    <script>
+        const isNavigating = localStorage.getItem("navigatingToCity");
+        if (isNavigating === "true") {
+            localStorage.removeItem("navigatingToCity");
+            localStorage.setItem("isLoggedIn", "true");
+        }
+    </script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Guide Guru</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="hotel.html"><i class="fas fa-hotel"></i> Hotels</a></li>
+                <li><a href="flight.html"><i class="fas fa-plane"></i> Flights</a></li>
+                <li><a href="buses.html?destination=delhi"><i class="fas fa-bus"></i> Buses</a></li>
+                <li><a href="explore.html"><i class="fas fa-binoculars"></i> Explore</a></li>
+                <li><a href="cars.html"><i class="fas fa-car"></i> Cars Rental</a></li>
+                <li><a href="bikes.html"><i class="fas fa-motorcycle"></i> Bikes Rental</a></li>
+                <li><a href="Train.html"><i class="fas fa-train"></i> Trains</a></li>
+            </ul>
+            <div class="user-nav">
+                <a href="#" id="logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Delhi Hero with Cultural Elements -->
+    <section class="hero delhi-hero" id="home">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Discover Historic Delhi</h1>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">Where Seven Cities Meet</p>
+        </div>
+        
+    
+        
+        <!-- Delhi Metro Animation -->
+        <div class="metro-animation">
+            <div class="metro-line"></div>
+            <div class="metro-train">
+                <div class="metro-coach"></div>
+                <div class="metro-coach"></div>
+                <div class="metro-coach"></div>
+            </div>
+        </div>
+        
+        <!-- Floating Rickshaws -->
+        <div class="rickshaw-elements">
+            <div class="rickshaw rickshaw-1"><i class="fas fa-bicycle"></i></div>
+            <div class="rickshaw rickshaw-2"><i class="fas fa-bicycle"></i></div>
+        </div>
+    </section>
+
+    <!-- Delhi Content -->
+    <section class="city-highlights">
+        <h2>Delhi Highlights</h2>
+        <div class="highlight-grid">
+            <div class="highlight-card">
+                <img src="images/q.png" alt="Delhi Monuments">
+                <h3>Historic Monuments</h3>
+                <p>Red Fort, Qutub Minar, Humayun's Tomb</p>
+                <div class="monument-icon"><i class="fas fa-monument"></i></div>
+            </div>
+            <div class="highlight-card">
+                <img src="images/f.png" alt="Delhi Street Food">
+                <h3>Street Food</h3>
+                <p>Chandni Chowk's famous delicacies</p>
+                <div class="food-icon"><i class="fas fa-utensils"></i></div>
+            </div>
+            <div class="highlight-card">
+                <img src="images/m.jpg" alt="Delhi Markets">
+                <h3>Vibrant Markets</h3>
+                <p>Sarojini, Janpath, Dilli Haat</p>
+                <div class="market-icon"><i class="fas fa-shopping-bag"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yamuna River Section -->
+    <section class="river-section">
+        <div class="river-content">
+            <h2>Yamuna River</h2>
+            <p>The lifeline of Delhi since ancient times</p>
+            <div class="river-animation">
+                <div class="river-wave wave-1"></div>
+                <div class="river-wave wave-2"></div>
+                <div class="river-wave wave-3"></div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Guide Guru</h3>
+                <p>Your complete travel companion</p>
+            </div>
+            <div class="footer-section">
+                <p>&copy; 2023 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            if (!isLoggedIn || isLoggedIn !== "true") {
+                window.location.href = "login.html";
+            }
+        };
+
+        document.getElementById("logout").addEventListener("click", function(e) {
+            e.preventDefault();
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

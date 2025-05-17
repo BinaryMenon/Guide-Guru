@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Trains to your destination</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylee.css">
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #34a853;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+        }
+        
+     
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1602002418816-5c0aeef426aa') no-repeat center center;
+            background-size: cover;
+            color: rgb(235, 123, 10);
+            padding: 100px 0;
+            margin-bottom: 30px;
+        }
+        
+        .search-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 25px;
+            background-color: white;
+        }
+        
+        .train-card {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .train-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .train-name {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .train-number {
+            background-color: #e8f0fe;
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .duration-badge {
+            background-color: #e6f4ea;
+            color: var(--secondary-color);
+        }
+        
+        .station-code {
+            font-weight: 600;
+            color: #5f6368;
+        }
+        
+        .class-badge {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        footer {
+            background-color: #202124;
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+     <nav class="navbar">
+            <div class="logo">Guide Guru</div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="hotel.html"><i class="fas fa-hotel"></i> Hotels</a></li>
+                <li><a href="#flight.html"><i class="fas fa-plane"></i> Flights</a></li>
+               <li><a href="buses.html"><i class="fas fa-bus"></i> Buses</a></li>
+               <li><a href="#explore"><i class="fas fa-binoculars"></i> Explore</a></li>
+                <li><a href="#cars"><i class="fas fa-car"></i> Cars Rental</a></li>
+                <li><a href="bikes.html"><i class="fas fa-motorcycle"></i> Bikes Rental</a></li>
+                <li><a href="Train.html"><i class="fas fa-train"></i> Trains</a></li>
+            </ul>
+            <div class="user-nav">
+                <a href="#" id="logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+    <!-- Hero Section with Search -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Book Trains from Bengaluru to Goa</h1>
+            <p class="lead mb-5">Find and book your perfect train journey to the beaches of Goa</p>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="search-card">
+                        <form id="searchForm">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="fromStation" class="form-label">From</label>
+                                    <select class="form-select" id="fromStation">
+                                        <option value="YPR">Yesvantpur Junction (YPR)</option>
+                                        <option value="SBC">KSR Bengaluru City (SBC)</option>
+                                        <option value="BAND">Banaswadi (BAND)</option>
+                                        <option value="WFD">Whitefield (WFD)</option>
+                                        <option value="BAW">Chik Banavar (BAW)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="toStation" class="form-label">To</label>
+                                    <select class="form-select" id="toStation">
+                                        <option value="MAO">Madgaon Junction (MAO)</option>
+                                        <option value="VSG">Vasco da Gama (VSG)</option>
+                                        <option value="LD">Londa Junction (LD)</option>
+                                        <option value="KAWR">Karwar (KAWR)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="travelDate" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="travelDate">
+                                </div>
+                                <div class="col-md-1 d-flex align-items-end">
+                                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Train List Section -->
+    <section class="container mb-5" id="trains">
+        <h2 class="text-center mb-4">Available Trains</h2>
+        <div class="row" id="trainResults">
+            <!-- Train cards will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Stations Information -->
+    <section class="container mb-5" id="stations">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5>Bengaluru Boarding Stations</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Yesvantpur Junction (YPR)</li>
+                            <li class="list-group-item">KSR Bengaluru City (SBC)</li>
+                            <li class="list-group-item">Banaswadi (BAND)</li>
+                            <li class="list-group-item">Whitefield (WFD)</li>
+                            <li class="list-group-item">Chik Banavar (BAW)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5>Goa Deboarding Stations</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Madgaon Junction (MAO)</li>
+                            <li class="list-group-item">Vasco da Gama (VSG)</li>
+                            <li class="list-group-item">Londa Junction (LD)</li>
+                            <li class="list-group-item">Karwar (KAWR)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>GoaExpress</h5>
+                    <p>Your reliable partner for Bengaluru to Goa train journeys.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: chandru@123gmail.com</p>
+                    <p>Phone: +91 636363636</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">About Us</a></li>
+                        <li><a href="#" class="text-white">FAQs</a></li>
+                        <li><a href="#" class="text-white">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center">
+                <p class="mb-0">©2025 Chandru. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Train data from your Excel file
+        const trainsData = [
+            {
+                name: "Yesvantpur–Vasco da Gama Express",
+                number: "17309",
+                departure: "15:00",
+                departureStation: "YPR",
+                arrival: "03:25",
+                arrivalStation: "MAO",
+                duration: "12h 25m",
+                classes: ["2A", "3A", "SL", "General"],
+                frequency: "Daily"
+            },
+            {
+                name: "Rani Chennamma Express",
+                number: "16589",
+                departure: "23:00",
+                departureStation: "SBC",
+                arrival: "07:50",
+                arrivalStation: "LD",
+                duration: "8h 50m",
+                classes: ["2A", "3A", "SL"],
+                frequency: "Daily"
+            },
+            {
+                name: "Vishwamanav Express",
+                number: "17326",
+                departure: "08:45",
+                departureStation: "SBC",
+                arrival: "20:04",
+                arrivalStation: "LD",
+                duration: "11h 19m",
+                classes: ["2S", "SL"],
+                frequency: "Daily"
+            },
+            {
+                name: "Vasco Express",
+                number: "17316",
+                departure: "11:05",
+                departureStation: "YPR",
+                arrival: "22:00",
+                arrivalStation: "VSG",
+                duration: "11h",
+                classes: ["2A", "3A", "SL"],
+                frequency: "Wednesday"
+            },
+            {
+                name: "YPR–VSG Express",
+                number: "17309",
+                departure: "15:00",
+                departureStation: "YPR",
+                arrival: "03:25",
+                arrivalStation: "MAO",
+                duration: "12h 25m",
+                classes: ["2A", "3A", "SL", "General"],
+                frequency: "Friday"
+            }
+        ];
+
+        // Display all trains on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayTrains(trainsData);
+            
+            // Set default date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('travelDate').valueAsDate = tomorrow;
+        });
+
+        // Search form handler
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fromStation = document.getElementById('fromStation').value;
+            const toStation = document.getElementById('toStation').value;
+            const travelDate = document.getElementById('travelDate').value;
+            
+            // Filter trains based on selected stations
+            const filteredTrains = trainsData.filter(train => {
+                return train.departureStation === fromStation && 
+                       (train.arrivalStation === toStation || 
+                        (toStation === 'MAO' && train.arrivalStation === 'VSG') || 
+                        (toStation === 'VSG' && train.arrivalStation === 'MAO'));
+            });
+            
+            displayTrains(filteredTrains);
+        });
+
+        // Function to display trains
+        function displayTrains(trains) {
+            const trainResults = document.getElementById('trainResults');
+            trainResults.innerHTML = '';
+            
+            if (trains.length === 0) {
+                trainResults.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <h4 class="text-muted">No trains found for your search</h4>
+                        <p>Try different stations or check back later</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            trains.forEach(train => {
+                const trainCard = document.createElement('div');
+                trainCard.className = 'col-md-6';
+                trainCard.innerHTML = `
+                    <div class="train-card card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h4 class="train-name mb-0">${train.name}</h4>
+                                <span class="train-number">${train.number}</span>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-5">
+                                    <div class="fw-bold">${train.departure}</div>
+                                    <div class="text-muted station-code">${getStationName(train.departureStation)} (${train.departureStation})</div>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <span class="badge duration-badge">${train.duration}</span>
+                                </div>
+                                <div class="col-5 text-end">
+                                    <div class="fw-bold">${train.arrival}</div>
+                                    <div class="text-muted station-code">${getStationName(train.arrivalStation)} (${train.arrivalStation})</div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark">${train.frequency}</span>
+                            </div>
+                            
+                            <div>
+                                <h6>Available Classes:</h6>
+                                ${train.classes.map(cls => `<span class="badge bg-info text-dark class-badge">${cls}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-sm btn-primary">Book Now</button>
+                            <button class="btn btn-sm btn-outline-secondary ms-2">View Details</button>
+                        </div>
+                    </div>
+                `;
+                trainResults.appendChild(trainCard);
+            });
+        }
+
+        // Helper function to get station name from code
+        function getStationName(code) {
+            const stations = {
+                'YPR': 'Yesvantpur Junction',
+                'SBC': 'KSR Bengaluru City',
+                'BAND': 'Banaswadi',
+                'WFD': 'Whitefield',
+                'BAW': 'Chik Banavar',
+                'MAO': 'Madgaon Junction',
+                'VSG': 'Vasco da Gama',
+                'LD': 'Londa Junction',
+                'KAWR': 'Karwar'
+            };
+            return stations[code] || code;
+        }
+    </script>
+</body>
+</html>

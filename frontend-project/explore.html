@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Gems Explorer | Underrated Places & Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --teal: #00CED1;
+            --coral: #FF6B6B;
+            --lavender: #E6E6FA;
+            --midnight: #191970;
+            --text: #333;
+            --bg: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--bg));
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--gold), var(--coral));
+        }
+
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .city-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .city-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .city-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .city-card:hover .city-image img {
+            transform: scale(1.1);
+        }
+
+        .city-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: var(--midnight);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .city-content {
+            padding: 1.5rem;
+        }
+
+        .city-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--midnight);
+        }
+
+        .city-desc {
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .attractions {
+            margin-top: 1rem;
+        }
+
+        .attraction {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .attraction:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .attraction-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--lavender);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: var(--midnight);
+        }
+
+        .events-section {
+            background: linear-gradient(135deg, var(--midnight), #000033);
+            padding: 5rem 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .events-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.3"/></svg>');
+            opacity: 0.1;
+        }
+
+        .events-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .event-date {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--midnight);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .event-location i {
+            margin-right: 5px;
+            color: var(--teal);
+        }
+
+        .event-desc {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .event-link {
+            display: inline-block;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .event-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .event-link:hover::after {
+            width: 100%;
+        }
+
+        footer {
+            background: var(--midnight);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .city-card:nth-child(1) { animation: fadeInUp 0.8s ease 0.2s both; }
+        .city-card:nth-child(2) { animation: fadeInUp 0.8s ease 0.4s both; }
+        .city-card:nth-child(3) { animation: fadeInUp 0.8s ease 0.6s both; }
+        .city-card:nth-child(4) { animation: fadeInUp 0.8s ease 0.8s both; }
+
+        .event-card:nth-child(1) { animation: fadeInUp 0.8s ease 0.2s both; }
+        .event-card:nth-child(2) { animation: fadeInUp 0.8s ease 0.4s both; }
+        .event-card:nth-child(3) { animation: fadeInUp 0.8s ease 0.6s both; }
+        .event-card:nth-child(4) { animation: fadeInUp 0.8s ease 0.8s both; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Hidden Gems Explorer</h1>
+        <p>Discover underrated places and upcoming events in India's most fascinating cities</p>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">Underrated Places</h2>
+        <div class="cities-grid">
+            <!-- Ahmedabad -->
+            <div class="city-card">
+                <div class="city-image">
+                    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ahmedabad">
+                    <div class="city-tag">Cultural</div>
+                </div>
+                <div class="city-content">
+                    <h3 class="city-name">Ahmedabad</h3>
+                    <p class="city-desc">Beyond the famous Sabarmati Ashram lies a city brimming with hidden heritage</p>
+                    <div class="attractions">
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-archway"></i>
+                            </div>
+                            <div>
+                                <strong>Jhulta Minara</strong> - The mysterious shaking minarets
+                            </div>
+                        </div>
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div>
+                                <strong>Manek Chowk Night Market</strong> - Midnight food paradise
+                            </div>
+                        </div>
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <div>
+                                <strong>Adalaj Stepwell</strong> - Architectural marvel hidden underground
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pondicherry -->
+            <div class="city-card">
+                <div class="city-image">
+                    <img src="images/para.jpg" alt="Pondicherry">
+                    <div class="city-tag">Serene</div>
+                </div>
+                <div class="city-content">
+                    <h3 class="city-name">Pondicherry</h3>
+                    <p class="city-desc">The French quarter is famous, but these spots remain peaceful secrets</p>
+                    <div class="attractions">
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <div>
+                                <strong>Auroville Botanical Gardens</strong> - Rare plant species sanctuary
+                            </div>
+                        </div>
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-umbrella-beach"></i>
+                            </div>
+                            <div>
+                                <strong>Paradise Beach</strong> - Accessible only by boat
+                            </div>
+                        </div>
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div>
+                                <strong>Kasha Ki Aasha</strong> - Hidden artist collective
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delhi -->
+            <div class="city-card">
+                <div class="city-image">
+                    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Delhi">
+                    <div class="city-tag">Historical</div>
+                </div>
+                <div class="city-content">
+                    <h3 class="city-name">Delhi</h3>
+                    <p class="city-desc">Secret spots even locals don't know about in this bustling metropolis</p>
+                    <div class="attractions">
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div>
+                                <strong>Agrasen Ki Baoli</strong> - Ancient stepwell hidden among skyscrapers
+                            </div>
+                        </div>
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <div>
+                                <strong>Lodhi Art District</strong> - Open-air street art museum
+                            </div>
+                        </div>
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-coffee"></i>
+                            </div>
+                            <div>
+                                <strong>Kunzum Travel Cafe</strong> - Hidden hub for travelers
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goa -->
+            <div class="city-card">
+                <div class="city-image">
+                    <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Goa">
+                    <div class="city-tag">Escape</div>
+                </div>
+                <div class="city-content">
+                    <h3 class="city-name">Goa</h3>
+                    <p class="city-desc">Beyond the beaches - Goa's best kept secrets</p>
+                    <div class="attractions">
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-forest"></i>
+                            </div>
+                            <div>
+                                <strong>Netravali Bubble Lake</strong> - Mysterious bubbling waters
+                            </div>
+                        </div>
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-fort-awesome"></i>
+                            </div>
+                            <div>
+                                <strong>Cab de Rama Fort</strong> - Cliffside ruins with epic views
+                            </div>
+                        </div>
+                        <div class="attraction">
+                            <div class="attraction-icon">
+                                <i class="fas fa-drumstick-bite"></i>
+                            </div>
+                            <div>
+                                <strong>Fisherman's Wharf</strong> - Local seafood haven
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="events-section">
+        <div class="events-container">
+            <h2 class="section-title" style="color: white;">Upcoming Events</h2>
+            <div class="events-grid">
+                <!-- Ahmedabad Event -->
+                <div class="event-card">
+                    <span class="event-date">May 25-27, 2024</span>
+                    <h3 class="event-title">Rann Utsav - Kutch Festival</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>White Rann, Kutch (from Ahmedabad)</span>
+                    </div>
+                    <p class="event-desc">Experience the magical white desert under full moon with cultural performances, handicrafts, and local cuisine.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+
+                <!-- Pondicherry Event -->
+                <div class="event-card">
+                    <span class="event-date">June 10-12, 2024</span>
+                    <h3 class="event-title">Pondicherry Heritage Walk</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>French Quarter, Pondicherry</span>
+                    </div>
+                    <p class="event-desc">Secret alleys and untold stories of the French colonial era with local historians.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+
+                <!-- Delhi Event -->
+                <div class="event-card">
+                    <span class="event-date">July 5-7, 2024</span>
+                    <h3 class="event-title">Delhi Food Hidden Gems Tour</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Old Delhi</span>
+                    </div>
+                    <p class="event-desc">Explore 7 generations-old eateries in hidden galis that even food bloggers miss.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+
+                <!-- Goa Event -->
+                <div class="event-card">
+                    <span class="event-date">August 15-18, 2024</span>
+                    <h3 class="event-title">Monsoon Art Escape</h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Chapora River Valley</span>
+                    </div>
+                    <p class="event-desc">Secret artist retreat with workshops in Goa's lush interior during the magical monsoon.</p>
+                    <a href="#" class="event-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Hidden Gems Explorer | Discover India's Best Kept Secrets</p>
+    </footer>
+</body>
+</html>

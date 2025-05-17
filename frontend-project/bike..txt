@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="gjk.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+  .raj{
+    border: 3px salmon solid;
+    border-radius:10px;
+    outline:0px solid green;
+    transform: translatez(10px); 
+  }
+
+  .rahul{
+    display:flex;
+    align-items: center;
+    gap: 5px;
+    width: "50px";
+    height: "50px";
+    background:linear-gradient(to right, #BE91BE, #DBAAA7);
+    transform: translatez(10px);
+  }
+
+  .bg-grey py-16{
+    border-width:3px;
+    border-color: rgb(26, 129, 43);
+    border-style: solid;    
+  }
+  body{
+    background-image: url("Honda-Bullet");
+    background-repeat: no-repeat;
+    background-position: justify;
+    margin-right: 500px;
+    background-attachment: unset;
+    
+  }
+  .kural{
+    border-width: 3px;
+    border-color: red;
+    border-style:solid;
+    box-sizing:content-box;
+    padding:30px;
+  }
+
+  .kavi{
+    text-align: center;
+  }
+</style>
+<body>
+  
+  <header div class="rahul flex justify-between items-right">
+    <img src="gjk.png" width="70px" height="70px" style="display: flex;">
+     <marquee bahaviour="scroll" direction="left" scroll amount="8s"><h1 class="text-5xl font-bold" style="color: orange;">GJK Bike Rentals</h1></marquee> 
+      <nav>
+        <ul class="flex space-x-6 text-sm font-medium">
+          <li><img src= "home logo.jpeg" width="70px" height="50px" class=" text-align: center; hover:text-blue-600">Home</a></li>
+          <li><img src="bikelogo.jpeg"  width="73px" height="90px" class="hover:text-blue-600">Bikes</a></li>
+          <li><img src="contact.jpg" width="71px" height="50px" class="hover:text-blue-600">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="bg-yellow-400 text-black py-20">
+    <div class="max-w-4xl mx-auto px-4 text-unset">
+      <h2 class="text-4xl font-bold mb-4">Take Your Dream Bike For Rent Today</h2>
+      <p class="text-lg mb-6">Affordable, Fast, and Convenient Bike Rentals for Every Adventure</p>
+    </div>
+  </section>
+
+
+  <section id="bikes" class="kavi">
+    <b><marquee direction="up"scrollamount="1" style="text-align: center;"><h3 class="text-3xl font-bold; font-family: cursive" style="color: crimson">Available Bikes</h3></marquee></b>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div class="raj">
+        <div class="bg-grey rounded-xl shadow p-4"><br>
+        <img src="Scooter - Copy.webp" alt="Bike 1" class="rounded-md mb-4">
+        <h4 class="text-xl font-semibold">Juptier Scooty</h4>
+        <p class="text-semibold text-black mb-2">Perfect for off-Road Adventures</p><br>
+        <p class="font-bold"><Rs>1200Rs/hour</Rs></p>
+        <button class="arial bg-orange-600 text-white px-5 py-3 rounded hover:bg-green-700">Rent Now</button>
+        </div>
+      </div>
+
+        <div class="raj">
+        <div class="bg-grey rounded-xl shadow p-4"><br>
+          <img src="Bajaj.discover.jpeg" alt="Bike 2" class="rounded-md mb-4">
+          <h4 class="text-xl font-semibold">Bajaj Discover</h4><br><br>
+          <p class="text-semibold text-black mb-3">Comfortable for Two Person</p>
+          <p class="font-bold"><Rs>1400Rs/hour</Rs></p>
+          <button class="arial bg-orange-600 text-white px-5 py-3 rounded hover:bg-green-700">Rent Now</button>  
+        </div>
+      </div>
+
+      <div class="raj">
+        <div class="bg-grey rounded-xl shadow p-4"><br>
+        <img src="Ebike.jpeg" alt="Bike 3" class="rounded-md mb-4">
+        <h4 class="text-xl font-semibold">Suzuki Bike</h4><br>
+        <p class="text-semibold text-black mb-3">Effortless long-distance/ Rides</p><br>
+        <p class="font-bold"><Rs>1600Rs/hour</Rs></p>
+        <button class="text-arial bg-orange-600 text-white px-5 py-3 rounded hover:bg-green-800">Rent Now</button>
+      </div>
+    </div>
+
+    <div class="raj">  
+      <div class="bg-grey rounded-xl shadow p-4">
+        <img src="Rx-100.jpg" alt="Bike 4" class="rounded-md mb-4">
+        <h4 class="text-xl font-bold">Rx-100</h4>
+        <p class="text-semibold text-black mb-3">Comfortable to ride with dio frds</p><br>
+        <p class="font-bold"><Rs>2500Rs/1hour</Rs></p>
+        <button class="text-arial bg-orange-600 text-white px-5 py-3 rounded hover:bg-green-800">Rent Now</button>
+      </div>
+    </div>
+
+    <div class="raj">
+        <div class="raja rounded-size shadow p-8">
+        <img src="Pulsar Img.jpeg" alt="Pulsar" class="rounded-md bg-grey"><br><br>
+        <h4 class="text-xl font-bold">Pulsar 150</h4>
+        <p class="text=semibold text-black-800 mb-3">Comfort to Ride and Take for rental for enjoy</p><br>
+        <p class="font-bold"><Rs>2000Rs/hour</Rs></p>
+        <button class="text-arial bg-orange-600 text-white px-5 py-3 rounded hover:bg-green-800">Rent Now</button>
+      </div>
+    </div>
+
+    
+    <div class="raj">
+      <div class="kav rounded-size shadow p-6"><br>
+        <img src="Bajaj.jpeg" alt="Ninja" class="rounded stable bg-grey"><br><br>
+        <h4 class="text-xl font-bold">Honda Shine</h4>
+        <p class="text-semibold text-black-800 mb-3">Comfort for Two Members and Riders and Enjoy your Trip</p>
+        <p class="font-bold"><Rs>1500Rs/hour</Rs></p>
+        <button class="text-arial bg-orange-600 text-white px-5 py-3 rounded hover:bg-green-800">Rent Now</button>
+      </div>
+    </div>
+
+  </section>
+
+   <br><footer class="bg-green-700 text-black py-4 text-center">
+    <b>      
+      <p>&copy; 2025 Book Your Dream Bike for Rental To your tourist places</p>
+      <p>All rights Reserved.</p>
+    </b>
+  </footer>
+
+</body>
+</html>

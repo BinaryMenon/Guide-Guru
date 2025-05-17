@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Services</title>
+    <link rel="stylesheet" href="/buses.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/stylee.css">
+</head>
+<body>
+    <header>
+       <header class="header">
+        <nav class="navbar">
+            <div class="logo">Guide Guru</div>
+            <ul class="nav-links">
+                <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="hotel.html"><i class="fas fa-hotel"></i> Hotels</a></li>
+                <li><a href="#flights"><i class="fas fa-plane"></i> Flights</a></li>
+                <li><a class="active" href="buses.html"><i class="fas fa-bus"></i> Buses</a></li>
+                <li><a href="#explore"><i class="fas fa-binoculars"></i> Explore</a></li>
+                <li><a href="#cars"><i class="fas fa-car"></i> Cars Rental</a></li>
+                <li><a href="#bikes"><i class="fas fa-motorcycle"></i> Bikes Rental</a></li>
+                <li><a href="#trains"><i class="fas fa-train"></i> Trains</a></li>
+            </ul>
+            <div class="user-nav">
+                <a href="#" id="logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bus-listings">
+        <div class="container">
+            <h2 class="section-title" id="destination-title">Find Your Perfect Bus</h2>
+            <p class="section-subtitle" id="destination-subtitle">Browse through our extensive selection of bus routes</p>
+            
+            <div class="bus-controls">
+                <div class="filters">
+                    <div class="filter-group">
+                        <h4>Filter By:</h4>
+                        <select class="filter-select" id="departure-filter">
+                            <option value="">Departure City</option>
+                        </select>
+                        
+                        <select class="filter-select" id="arrival-filter">
+                            <option value="">Arrival City</option>
+                        </select>
+                        
+                        <select class="filter-select" id="operator-filter">
+                            <option value="">Bus Operator</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="sorting">
+                    <div class="sort-group">
+                        <h4>Sort By:</h4>
+                        <select class="sort-select" id="price-sort">
+                            <option value="">Default</option>
+                            <option value="low-high">Price: Low to High</option>
+                            <option value="high-low">Price: High to Low</option>
+                        </select>
+                        
+                        <select class="sort-select" id="rating-sort">
+                            <option value="">Rating</option>
+                            <option value="high-low">Highest Rated</option>
+                            <option value="low-high">Lowest Rated</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bus-results">
+                <div class="bus-cards" id="bus-cards-container">
+                    <!-- Bus cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section> <!-- Your header content -->
+    </header>
+
+    <main>
+        <h1 id="destination-title">Buses</h1>
+        <div id="bus-cards-container" class="bus-cards">
+            <!-- Buses will be inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <script src="bus.js"></script>
+</body>
+</html>

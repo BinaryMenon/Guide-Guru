@@ -1,0 +1,331 @@
+/* Ahmedabad Hero Section */
+.ahmedabad-hero {
+    background: linear-gradient(rgba(44, 62, 80, 0.4), rgba(44, 62, 80, 0.6)), 
+                url('https://source.unsplash.com/1600x900/?ahmedabad,heritage') no-repeat center center;
+    background-size: cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Cultural Elements Animation */
+.cultural-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.heritage-arch {
+    position: absolute;
+    color: rgba(255, 215, 0, 0.7);
+    font-size: 3rem;
+    animation: heritageFloat 8s ease-in-out infinite;
+}
+
+.heritage-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.heritage-2 {
+    top: 15%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.food-plate {
+    position: absolute;
+    color: rgba(255, 165, 0, 0.7);
+    font-size: 2.5rem;
+    animation: foodSpin 6s linear infinite;
+    bottom: 25%;
+    left: 20%;
+}
+
+.chakra {
+    position: absolute;
+    color: rgba(0, 128, 0, 0.7);
+    font-size: 3rem;
+    animation: chakraRotate 10s linear infinite;
+    bottom: 20%;
+    right: 20%;
+}
+
+@keyframes heritageFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+@keyframes foodSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes chakraRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Textile Patterns */
+.textile-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.textile {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="20" height="20" x="0" y="0" fill="%23e74c3c"/><rect width="20" height="20" x="20" y="20" fill="%23e74c3c"/><rect width="20" height="20" x="40" y="0" fill="%23e74c3c"/><rect width="20" height="20" x="60" y="20" fill="%23e74c3c"/><rect width="20" height="20" x="80" y="0" fill="%23e74c3c"/></svg>');
+    background-size: contain;
+    opacity: 0.3;
+    animation: textileFloat 15s linear infinite;
+}
+
+.textile-1 {
+    top: 30%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.textile-2 {
+    top: 25%;
+    right: 5%;
+    animation-delay: 5s;
+}
+
+@keyframes textileFloat {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+    50% { transform: translateY(-50px) rotate(180deg); opacity: 0.7; }
+    100% { transform: translateY(0) rotate(360deg); opacity: 0.3; }
+}
+
+/* City Highlights */
+.city-highlights {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.city-highlights h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    position: relative;
+}
+
+.city-highlights h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #e74c3c;
+    border-radius: 2px;
+}
+
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.highlight-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    background: white;
+    position: relative;
+}
+
+.highlight-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.highlight-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.highlight-card:hover img {
+    transform: scale(1.05);
+}
+
+.highlight-card h3 {
+    padding: 1.5rem 1rem 0.5rem;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.highlight-card p {
+    padding: 0 1rem 1.5rem;
+    color: #64748b;
+}
+
+/* Icons for highlights */
+.heritage-icon, .food-icon, .ashram-icon {
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    background: #e74c3c;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Riverfront Section */
+.riverfront-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(to bottom, #f8f9fa, #e3f2fd);
+    position: relative;
+    overflow: hidden;
+}
+
+.riverfront-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.riverfront-content h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.riverfront-content p {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+.riverfront-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 100px;
+    background: rgba(0, 150, 255, 0.1);
+    border-radius: 50%;
+    animation: waveFlow 10s linear infinite;
+}
+
+.wave-1 {
+    top: 60%;
+    left: -50%;
+    animation-delay: 0s;
+}
+
+.wave-2 {
+    top: 65%;
+    left: -50%;
+    animation-delay: 2s;
+    opacity: 0.7;
+}
+
+.wave-3 {
+    top: 70%;
+    left: -50%;
+    animation-delay: 4s;
+    opacity: 0.4;
+}
+
+@keyframes waveFlow {
+    0% { transform: translateX(0) rotate(0deg); }
+    100% { transform: translateX(50%) rotate(1deg); }
+}
+
+/* Footer */
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .cultural-elements i {
+        font-size: 2rem !important;
+    }
+    
+    .textile {
+        width: 100px !important;
+        height: 100px !important;
+    }
+}

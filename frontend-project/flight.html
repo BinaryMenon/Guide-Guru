@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Explorer | Interactive Flight Visualization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f1c3f;
+            --secondary: #4a00e0;
+            --accent: #00f5d4;
+            --text: #e2f3f5;
+            --card-bg: rgba(15, 28, 63, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary), #1a1a2e);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.5"/></svg>');
+            opacity: 0.3;
+            z-index: -1;
+            animation: twinkle 5s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.5; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--accent), #8e2de2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+        }
+
+        .subtitle {
+            font-weight: 300;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .map-container {
+            position: relative;
+            height: 500px;
+            margin: 3rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(74, 0, 224, 0.3);
+            box-shadow: 0 0 30px rgba(74, 0, 224, 0.1);
+        }
+
+        .map {
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><path d="M100,150 Q200,100 300,150" stroke="rgba(74,0,224,0.2)" fill="none" stroke-width="1"/></svg>');
+            background-size: cover;
+            position: relative;
+        }
+
+        .city {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            transform: translate(-50%, -50%);
+        }
+
+        .city::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            top: -4px;
+            left: -4px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .city-label {
+            position: absolute;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            color: var(--accent);
+            text-shadow: 0 0 5px rgba(0, 245, 212, 0.5);
+        }
+
+        .delhi { top: 40%; left: 55%; }
+        .pondicherry { top: 70%; left: 60%; }
+        .goa { top: 65%; left: 40%; }
+        .ahmedabad { top: 45%; left: 45%; }
+
+        .flight-path {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent), transparent);
+            transform-origin: left center;
+            z-index: 1;
+        }
+
+        .flight-path::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            right: -12px;
+            top: -3px;
+            box-shadow: 0 0 5px white;
+        }
+
+        .flight-path::after {
+            content: '✈';
+            position: absolute;
+            right: -10px;
+            top: -15px;
+            font-size: 1.2rem;
+            animation: fly 3s linear infinite;
+        }
+
+        @keyframes fly {
+            0% { transform: translateX(0) rotate(0deg); }
+            100% { transform: translateX(-100%) rotate(5deg); }
+        }
+
+        .flights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .flight-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(74, 0, 224, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(74, 0, 224, 0.2);
+            border-color: var(--accent);
+        }
+
+        .flight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--secondary));
+        }
+
+        .flight-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .route {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .airline {
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        .flight-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .book-btn {
+            display: block;
+            width: 100%;
+            padding: 0.7rem;
+            margin-top: 1.5rem;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            border: none;
+            border-radius: 5px;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 245, 212, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+            
+            .flights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FLIGHT EXPLORER</h1>
+            <p class="subtitle">Real-time visualization of flights from major Indian cities with interactive animations</p>
+        </header>
+
+        <div class="map-container">
+            <div class="map">
+                <!-- Cities -->
+                <div class="city delhi"></div>
+                <div class="city-label" style="top: 38%; left: 55%;">DELHI (DEL)</div>
+                
+                <div class="city pondicherry"></div>
+                <div class="city-label" style="top: 72%; left: 60%;">PONDICHERRY (PNY)</div>
+                
+                <div class="city goa"></div>
+                <div class="city-label" style="top: 67%; left: 40%;">GOA (GOI)</div>
+                
+                <div class="city ahmedabad"></div>
+                <div class="city-label" style="top: 47%; left: 45%;">AHMEDABAD (AMD)</div>
+
+                <!-- Flight paths -->
+                <div class="flight-path" style="width: 120px; top: 40%; left: 55%; transform: rotate(-20deg);"></div>
+                <div class="flight-path" style="width: 150px; top: 65%; left: 40%; transform: rotate(10deg);"></div>
+                <div class="flight-path" style="width: 100px; top: 45%; left: 45%; transform: rotate(-5deg);"></div>
+                <div class="flight-path" style="width: 180px; top: 70%; left: 60%; transform: rotate(-30deg);"></div>
+            </div>
+        </div>
+
+        <div class="flights-grid">
+            <!-- Delhi Flights -->
+            <div class="flight-card">
+                <div class="flight-header">
+                    <span class="route">DEL → BOM</span>
+                    <span class="airline">Air India</span>
+                </div>
+                <div class="flight-details">
+                    <div class="detail">
+                        <span>🕒</span>
+                        <span>2h 10m</span>
+                    </div>
+                    <div class="detail">
+                        <span>💺</span>
+                        <span>42 seats</span>
+                    </div>
+                    <div class="detail">
+                        <span>🛫</span>
+                        <span>14:30</span>
+                    </div>
+                    <div class="detail">
+                        <span>🔥</span>
+                        <span>On Time</span>
+                    </div>
+                </div>
+                <button class="book-btn">BOOK NOW</button>
+            </div>
+
+            <!-- Goa Flights -->
+            <div class="flight-card">
+                <div class="flight-header">
+                    <span class="route">GOI → DEL</span>
+                    <span class="airline">IndiGo</span>
+                </div>
+                <div class="flight-details">
+                    <div class="detail">
+                        <span>🕒</span>
+                        <span>2h 35m</span>
+                    </div>
+                    <div class="detail">
+                        <span>💺</span>
+                        <span>18 seats</span>
+                    </div>
+                    <div class="detail">
+                        <span>🛫</span>
+                        <span>09:15</span>
+                    </div>
+                    <div class="detail">
+                        <span>🔥</span>
+                        <span>On Time</span>
+                    </div>
+                </div>
+                <button class="book-btn">BOOK NOW</button>
+            </div>
+
+            <!-- Ahmedabad Flights -->
+            <div class="flight-card">
+                <div class="flight-header">
+                    <span class="route">AMD → MAA</span>
+                    <span class="airline">SpiceJet</span>
+                </div>
+                <div class="flight-details">
+                    <div class="detail">
+                        <span>🕒</span>
+                        <span>1h 55m</span>
+                    </div>
+                    <div class="detail">
+                        <span>💺</span>
+                        <span>35 seats</span>
+                    </div>
+                    <div class="detail">
+                        <span>🛫</span>
+                        <span>16:45</span>
+                    </div>
+                    <div class="detail">
+                        <span>🔥</span>
+                        <span>Delayed</span>
+                    </div>
+                </div>
+                <button class="book-btn">BOOK NOW</button>
+            </div>
+
+            <!-- Pondicherry Flights -->
+            <div class="flight-card">
+                <div class="flight-header">
+                    <span class="route">PNY → BLR</span>
+                    <span class="airline">Vistara</span>
+                </div>
+                <div class="flight-details">
+                    <div class="detail">
+                        <span>🕒</span>
+                        <span>1h 10m</span>
+                    </div>
+                    <div class="detail">
+                        <span>💺</span>
+                        <span>12 seats</span>
+                    </div>
+                    <div class="detail">
+                        <span>🛫</span>
+                        <span>11:20</span>
+                    </div>
+                    <div class="detail">
+                        <span>🔥</span>
+                        <span>On Time</span>
+                    </div>
+                </div>
+                <button class="book-btn">BOOK NOW</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/gjk.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .bike-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .bike-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+
+  .bike-img {
+    transition: transform 0.5s ease;
+  }
+
+  .bike-card:hover .bike-img {
+    transform: scale(1.05);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .nav-item {
+    position: relative;
+    padding-bottom: 5px;
+  }
+
+  .nav-item:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f97316;
+    transition: width 0.3s ease;
+  }
+
+  .nav-item:hover:after {
+    width: 100%;
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/bike-pattern.png') repeat;
+    opacity: 0.1;
+    z-index: 0;
+  }
+
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .btn-rent {
+    background: linear-gradient(to right, #f59e0b, #f97316);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-rent:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+  }
+
+  .btn-rent:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+
+  .btn-rent:hover:after {
+    left: 100%;
+  }
+
+  .marquee-title {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    background: linear-gradient(to right, #f59e0b, #f97316, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .section-title {
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    bottom: -10px;
+    left: 25%;
+    background: linear-gradient(to right, #f59e0b, #f97316);
+    border-radius: 2px;
+  }
+
+  footer {
+    background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  footer:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/footer-pattern.png') repeat;
+    opacity: 0.1;
+    z-index: 0;
+  }
+</style>
+<body class="font-['Poppins'] bg-gray-50">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <img src="images/gjk.png" width="70" height="70" class="animate__animated animate__fadeInLeft" alt="GJK Logo">
+        <h1 class="text-3xl md:text-4xl font-bold marquee-title animate__animated animate__fadeIn">
+          GJK Bike Rentals
+        </h1>
+      </div>
+      
+      <nav class="hidden md:block">
+        <ul class="flex space-x-8">
+          <li class="nav-item">
+            <a href="#home" class="text-gray-800 hover:text-orange-500 font-medium flex items-center">
+              <i class="fas fa-home mr-2"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#bikes" class="text-gray-800 hover:text-orange-500 font-medium flex items-center">
+              <i class="fas fa-motorcycle mr-2"></i> Bikes
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="text-gray-800 hover:text-orange-500 font-medium flex items-center">
+              <i class="fas fa-phone-alt mr-2"></i> Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <button class="md:hidden text-gray-800">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section text-white py-20 md:py-32 relative">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-2xl animate__animated animate__fadeInUp">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Take Your Dream Bike For Rent Today</h2>
+        <p class="text-xl mb-8">Affordable, Fast, and Convenient Bike Rentals for Every Adventure</p>
+        <div class="flex space-x-4">
+          <a href="#bikes" class="btn-rent text-white px-8 py-3 rounded-full font-semibold pulse">
+            Explore Bikes <i class="fas fa-arrow-down ml-2"></i>
+          </a>
+          <a href="#contact" class="bg-white text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+            Contact Us <i class="fas fa-phone-alt ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bikes Section -->
+  <section id="bikes" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h3 class="text-4xl font-bold text-center mb-16 section-title animate__animated animate__fadeIn">
+        Available Bikes
+      </h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Bike 1 -->
+        <div class="bike-card bg-white animate__animated animate__fadeInUp">
+          <div class="p-6">
+            <div class="overflow-hidden rounded-lg">
+              <img src="images/Scooter - Copy.webp" alt="Jupiter Scooty" class="w-full h-48 object-cover bike-img">
+            </div>
+            <h4 class="text-xl font-semibold mt-4">Jupiter Scooty</h4>
+            <p class="text-gray-600 mb-4">Perfect for city commuting and short trips</p>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-orange-600">₹1200<span class="text-sm font-normal">/hour</span></p>
+              <button class="btn-rent text-white px-6 py-2 rounded-full font-medium">
+                Rent Now <i class="fas fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bike 2 -->
+        <div class="bike-card bg-white animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="p-6">
+            <div class="overflow-hidden rounded-lg">
+              <img src="images/Bajaj.discover.jpeg" alt="Bajaj Discover" class="w-full h-48 object-cover bike-img">
+            </div>
+            <h4 class="text-xl font-semibold mt-4">Bajaj Discover</h4>
+            <p class="text-gray-600 mb-4">Comfortable for two people with great mileage</p>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-orange-600">₹1400<span class="text-sm font-normal">/hour</span></p>
+              <button class="btn-rent text-white px-6 py-2 rounded-full font-medium">
+                Rent Now <i class="fas fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bike 3 -->
+        <div class="bike-card bg-white animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="p-6">
+            <div class="overflow-hidden rounded-lg">
+              <img src="images/Ebike.jpeg" alt="Suzuki Bike" class="w-full h-48 object-cover bike-img">
+            </div>
+            <h4 class="text-xl font-semibold mt-4">Suzuki Bike</h4>
+            <p class="text-gray-600 mb-4">Effortless long-distance rides with power</p>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-orange-600">₹1600<span class="text-sm font-normal">/hour</span></p>
+              <button class="btn-rent text-white px-6 py-2 rounded-full font-medium">
+                Rent Now <i class="fas fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bike 4 -->
+        <div class="bike-card bg-white animate__animated animate__fadeInUp">
+          <div class="p-6">
+            <div class="overflow-hidden rounded-lg">
+              <img src="images/Rx-100.jpg" alt="Rx-100" class="w-full h-48 object-cover bike-img">
+            </div>
+            <h4 class="text-xl font-semibold mt-4">Rx-100</h4>
+            <p class="text-gray-600 mb-4">Classic bike for enthusiasts and collectors</p>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-orange-600">₹2500<span class="text-sm font-normal">/hour</span></p>
+              <button class="btn-rent text-white px-6 py-2 rounded-full font-medium">
+                Rent Now <i class="fas fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bike 5 -->
+        <div class="bike-card bg-white animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="p-6">
+            <div class="overflow-hidden rounded-lg">
+              <img src="images/Pulsar Img.jpeg" alt="Pulsar 150" class="w-full h-48 object-cover bike-img">
+            </div>
+            <h4 class="text-xl font-semibold mt-4">Pulsar 150</h4>
+            <p class="text-gray-600 mb-4">Sporty ride with great performance</p>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-orange-600">₹2000<span class="text-sm font-normal">/hour</span></p>
+              <button class="btn-rent text-white px-6 py-2 rounded-full font-medium">
+                Rent Now <i class="fas fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bike 6 -->
+        <div class="bike-card bg-white animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="p-6">
+            <div class="overflow-hidden rounded-lg">
+              <img src="images/Bajaj.jpeg" alt="Honda Shine" class="w-full h-48 object-cover bike-img">
+            </div>
+            <h4 class="text-xl font-semibold mt-4">Honda Shine</h4>
+            <p class="text-gray-600 mb-4">Reliable and comfortable for all riders</p>
+            <div class="flex justify-between items-center">
+              <p class="text-2xl font-bold text-orange-600">₹1500<span class="text-sm font-normal">/hour</span></p>
+              <button class="btn-rent text-white px-6 py-2 rounded-full font-medium">
+                Rent Now <i class="fas fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h3 class="text-4xl font-bold text-center mb-12 section-title animate__animated animate__fadeIn">
+        Contact Us
+      </h3>
+      
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 animate__animated animate__fadeInUp">
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <h4 class="text-2xl font-semibold mb-4 text-orange-600">Get in Touch</h4>
+          <form>
+            <div class="mb-4">
+              <label class="block text-gray-700 mb-2" for="name">Name</label>
+              <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 mb-2" for="email">Email</label>
+              <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 mb-2" for="message">Message</label>
+              <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+            </div>
+            <button type="submit" class="btn-rent text-white px-6 py-3 rounded-full font-medium w-full">
+              Send Message <i class="fas fa-paper-plane ml-2"></i>
+            </button>
+          </form>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <h4 class="text-2xl font-semibold mb-4 text-orange-600">Contact Information</h4>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-orange-100 p-3 rounded-full mr-4">
+                <i class="fas fa-map-marker-alt text-orange-600"></i>
+              </div>
+              <div>
+                <h5 class="font-semibold">Address</h5>
+                <p class="text-gray-600">123 Bike Street, Rental City, 600001</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-orange-100 p-3 rounded-full mr-4">
+                <i class="fas fa-phone-alt text-orange-600"></i>
+              </div>
+              <div>
+                <h5 class="font-semibold">Phone</h5>
+                <p class="text-gray-600">+91 9876543210</p>
+                <p class="text-gray-600">+91 1234567890</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-orange-100 p-3 rounded-full mr-4">
+                <i class="fas fa-envelope text-orange-600"></i>
+              </div>
+              <div>
+                <h5 class="font-semibold">Email</h5>
+                <p class="text-gray-600">info@gjkbikerentals.com</p>
+                <p class="text-gray-600">support@gjkbikerentals.com</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8">
+            <h5 class="font-semibold mb-4">Follow Us</h5>
+            <div class="flex space-x-4">
+              <a href="#" class="bg-gray-200 p-3 rounded-full hover:bg-orange-500 hover:text-white transition">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="bg-gray-200 p-3 rounded-full hover:bg-orange-500 hover:text-white transition">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="bg-gray-200 p-3 rounded-full hover:bg-orange-500 hover:text-white transition">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="bg-gray-200 p-3 rounded-full hover:bg-orange-500 hover:text-white transition">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-white py-8 relative">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <img src="images/gjk.png" width="60" height="60" alt="GJK Logo">
+          <p class="mt-2 font-medium">Your trusted bike rental partner</p>
+        </div>
+        
+        <div class="text-center md:text-right">
+          <p class="font-bold text-lg">&copy; 2025 GJK Bike Rentals</p>
+          <p>All rights reserved.</p>
+          <p class="mt-2">Book your dream bike for rental to your tourist places</p>
+        </div>
+      </div>
+      
+      <div class="border-t border-white border-opacity-20 mt-6 pt-6 text-center">
+        <p class="text-sm">Designed with <i class="fas fa-heart text-red-400"></i> for bike enthusiasts</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="fixed bottom-6 right-6 bg-orange-600 text-white p-3 rounded-full shadow-lg hover:bg-orange-700 transition transform hover:scale-110">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    // Simple animation trigger on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.animate__animated');
+        
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.2;
+          
+          if(elementPosition < screenPosition) {
+            const animationClass = element.classList[1];
+            element.classList.add(animationClass);
+          }
+        });
+      };
+      
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll(); // Trigger on load for elements in view
+    });
+  </script>
+</body>
+</html>

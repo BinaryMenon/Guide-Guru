@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotels in Goa | Find the Best Deals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+   <link rel="stylesheet" href="stylee.css">
+  
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgba(246, 243, 243, 0.904);
+      color: rgb(51, 51, 51);
+    }
+ 
+
+    header {
+      background-color: rgb(172, 100, 12);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: rgb(159, 66, 19);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .hotel-card {
+      background-color: white;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 20px;
+    }
+
+    .hotel-card img {
+      width: 200px;
+      border-radius: 10px;
+    }
+
+    .hotel-details {
+      flex: 1;
+    }
+
+    .hotel-details h3 {
+      margin-top: 0;
+    }
+
+    .price {
+      color: rgb(211, 47, 47);
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgb(0, 53, 128);
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Find the Best Hotels in Goa</h1>
+    <p>Compare deals, reviews, and prices across top properties</p>
+  </header>
+
+  <nav>
+  <nav class="navbar">
+            <div class="logo">Guide Guru</div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#hotels"><i class="fas fa-hotel"></i> Hotels</a></li>
+                <li><a href="#flights"><i class="fas fa-plane"></i> Flights</a></li>
+               <li><a href="buses.html"><i class="fas fa-bus"></i> Buses</a></li>
+               <li><a href="#explore"><i class="fas fa-binoculars"></i> Explore</a></li>
+                <li><a href="#cars"><i class="fas fa-car"></i> Cars Rental</a></li>
+                <li><a href="#bikes"><i class="fas fa-motorcycle"></i> Bikes Rental</a></li>
+                <li><a href="#trains"><i class="fas fa-train"></i> Trains</a></li>
+            </ul>
+            <div class="user-nav">
+                <a href="#" id="logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+  </nav>
+
+  <div class="container">
+    <div class="hotel-card">
+      <img src="https://www.travelplusstyle.com/wp-content/uploads/2015/11/laamu_water_villa_with_pool_5962-original-1.jpg" alt="Hotel Image">
+      <div class="hotel-details">
+        <h3 runat="server">Luxury Beach Resort</h3>
+        <p>Located near Baga Beach, this 5-star resort offers stunning views, an infinity pool, and complimentary breakfast.</p>
+        <p class="price">From ₹7,499 per night</p>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://media-cdn.tripadvisor.com/media/photo-s/1c/54/40/69/lazy-lagoon-baga-a-lemon.jpg" alt="Hotel Image">
+      <div class="hotel-details">
+        <h3>Budget Stay Inn</h3>
+        <p>A cozy and affordable option for backpackers and solo travelers. Walking distance to restaurants and nightlife.</p>
+        <p class="price">From ₹1,999 per night</p>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://images.lifestyleasia.com/wp-content/uploads/sites/7/2022/02/25111709/untitled-design-81-1-793x560.jpeg" alt="Hotel Image">
+      <div class="hotel-details">
+        <h3>Family Holiday Villa</h3>
+        <p>Spacious 3-bedroom villa perfect for families, complete with a private pool and kitchen facilities.</p>
+        <p class="price">From ₹5,200 per night</p>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://ihplb.b-cdn.net/wp-content/uploads/2013/12/Heritage-Hotels-in-Rajasthan.jpg" alt="Hotel Image">
+      <div class="hotel-details">
+        <h3>Heritage Hotels</h3>
+        <p>Step into God's colonial charm where history lives and luxury breathes.</p>
+        <p class="price">From ₹29,800 per night</p>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://urbanmatter.com/chicago/wp-content/uploads/2017/01/CHI_Lounge.jpg" alt="Hotel Image">
+      <div class="hotel-details">
+        <h3>Botique Hotels</h3>
+        <p>Stay stylish in uniquely curated spaces that blend art, culture and comfort.</p>
+        <p class="price">From ₹15,000 per night</p>
+      </div>
+    </div> 
+  </div>
+
+  <footer>
+    <p>&copy; 2025 GoaHotelSearch. All rights reserved.</p>
+  </footer>
+</body>
+</html>

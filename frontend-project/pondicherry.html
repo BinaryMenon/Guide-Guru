@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head -->
+    <title>TravelPulse Pondicherry - Your Complete Travel Companion</title>
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="pondicherry.css">
+</head>
+<body>
+   <header class="header">
+        <nav class="navbar">
+            <div class="logo">Guide Guru</div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#hotels"><i class="fas fa-hotel"></i> Hotels</a></li>
+                <li><a href="#flights"><i class="fas fa-plane"></i> Flights</a></li>
+                <li><a href="buses.html"><i class="fas fa-bus"></i> Buses</a></li>
+                <li><a href="#explore"><i class="fas fa-binoculars"></i> Explore</a></li>
+                <li><a href="#cars"><i class="fas fa-car"></i> Cars Rental</a></li>
+                <li><a href="#bikes"><i class="fas fa-motorcycle"></i> Bikes Rental</a></li>
+                <li><a href="#trains"><i class="fas fa-train"></i> Trains</a></li>
+            </ul>
+            <div class="user-nav">
+                <a href="#" id="logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+    <!-- Same header -->
+
+    <!-- Pondicherry Hero -->
+
+     
+     
+    
+
+    <!-- Same footer -->
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelPulse Goa - Your Complete Travel Companion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="goa.css">
+    
+    <!-- Immediate check for navigation flag -->
+    <script>
+        // Check if we're coming from a navigation
+        const isNavigating = localStorage.getItem("navigatingToCity");
+        if (isNavigating === "true") {
+            localStorage.removeItem("navigatingToCity");
+            localStorage.setItem("isLoggedIn", "true");
+             
+        }
+    </script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Guide Guru</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="hotel.html"><i class="fas fa-hotel"></i> Hotels</a></li>
+                <li><a href="flight.html"><i class="fas fa-plane"></i> Flights</a></li>
+                <li><a href="buses.html?destination=pondicherry"><i class="fas fa-bus"></i> Buses</a></li>
+                <li><a href="explore.html"><i class="fas fa-binoculars"></i> Explore</a></li>
+                <li><a href="cars.html"><i class="fas fa-car"></i> Cars Rental</a></li>
+                <li><a href="bikes.html"><i class="fas fa-motorcycle"></i> Bikes Rental</a></li>
+                <li><a href="Train.html"><i class="fas fa-train"></i> Trains</a></li>
+            </ul>
+            <div class="user-nav">
+                <a href="#" id="logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+   <section class="hero pondicherry-hero" id="home">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Experience Pondicherry</h1>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">The French Riviera of the East</p>
+        </div>
+    </section>
+    
+
+    <!-- Pondicherry Content -->
+    <section class="city-highlights">
+        <h2>Pondicherry Highlights</h2>
+        <div class="highlight-grid">
+            <div class="highlight-card">
+                <img src="images/promede.jpg" alt="Pondicherry Beaches">
+                <h3>Serene Beaches</h3>
+                <p>Promenade Beach, Paradise Beach</p>
+            </div>
+            <div class="highlight-card">
+                <img src="images/cafe.jph.jpg" alt="French Quarter">
+                <h3>French Quarter</h3>
+                <p>Colonial architecture and cafes</p>
+            </div>
+            <div class="highlight-card">
+                <img src="images/auro.jpg" alt="Auroville">
+                <h3>Auroville</h3>
+                <p>The international township</p>
+            </div>
+        </div>
+    </section>
+   
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Guide Guru</h3>
+                <p>Your complete travel companion</p>
+            </div>
+            <div class="footer-section">
+                <p>&copy; 2023 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Normal login check after page loads
+        window.onload = function() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            if (!isLoggedIn || isLoggedIn !== "true") {
+                window.location.href = "login.html";
+            }
+        };
+
+        // Logout functionality
+        document.getElementById("logout").addEventListener("click", function(e) {
+            e.preventDefault();
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

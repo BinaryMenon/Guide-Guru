@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmedabad - Heritage City | Guide Guru</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="ahmedabad.css">
+    
+    <script>
+        const isNavigating = localStorage.getItem("navigatingToCity");
+        if (isNavigating === "true") {
+            localStorage.removeItem("navigatingToCity");
+            localStorage.setItem("isLoggedIn", "true");
+        }
+    </script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Guide Guru</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="hotel.html"><i class="fas fa-hotel"></i> Hotels</a></li>
+                <li><a href="#flight.html"><i class="fas fa-plane"></i> Flights</a></li>
+                <li><a href="buses.html?destination=ahmedabad"><i class="fas fa-bus"></i> Buses</a></li>
+                <li><a href="explore.html"><i class="fas fa-binoculars"></i> Explore</a></li>
+                <li><a href="cars.html"><i class="fas fa-car"></i> Cars Rental</a></li>
+                <li><a href="bikes.html"><i class="fas fa-motorcycle"></i> Bikes Rental</a></li>
+                <li><a href="Train.html"><i class="fas fa-train"></i> Trains</a></li>
+            </ul>
+            <div class="user-nav">
+                <a href="#" id="logout" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Ahmedabad Hero with Cultural Elements -->
+    <section class="hero ahmedabad-hero" id="home">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Explore Ahmedabad</h1>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">Where Heritage Meets Modernity</p>
+        </div>
+        
+        <!-- Cultural Animation Elements -->
+        <div class="cultural-elements">
+            <div class="heritage-arch heritage-1"><i class="fas fa-archway"></i></div>
+            <div class="heritage-arch heritage-2"><i class="fas fa-archway"></i></div>
+            <div class="food-plate"><i class="fas fa-utensils"></i></div>
+            <div class="chakra"><i class="fas fa-yin-yang"></i></div>
+        </div>
+        
+        <!-- Floating Textiles -->
+        <div class="textile-elements">
+            <div class="textile textile-1"></div>
+            <div class="textile textile-2"></div>
+        </div>
+    </section>
+
+    <!-- Ahmedabad Content -->
+    <section class="city-highlights">
+        <h2>Ahmedabad Highlights</h2>
+        <div class="highlight-grid">
+            <div class="highlight-card">
+                <img src="images/hertiage.jpg" alt="Heritage Sites">
+                <h3>Heritage Walk</h3>
+                <p>Explore the famous Pol houses and historic landmarks</p>
+                <div class="heritage-icon"><i class="fas fa-monument"></i></div>
+            </div>
+            <div class="highlight-card">
+                <img src="images/guju.jpg" alt="Gujarati Thali">
+                <h3>Gujarati Cuisine</h3>
+                <p>Dhokla, Thepla, Fafda and more</p>
+                <div class="food-icon"><i class="fas fa-utensils"></i></div>
+            </div>
+            <div class="highlight-card">
+                <img src="images/ashram.jpg" alt="Sabarmati Ashram">
+                <h3>Sabarmati Ashram</h3>
+                <p>Gandhi's historic residence</p>
+                <div class="ashram-icon"><i class="fas fa-peace"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Riverfront Section -->
+    <section class="riverfront-section">
+        <div class="riverfront-content">
+            <h2>Sabarmati Riverfront</h2>
+            <p>The revitalized heart of Ahmedabad</p>
+            <div class="riverfront-animation">
+                <div class="wave wave-1"></div>
+                <div class="wave wave-2"></div>
+                <div class="wave wave-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Guide Guru</h3>
+                <p>Your complete travel companion</p>
+            </div>
+            <div class="footer-section">
+                <p>&copy; 2023 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            if (!isLoggedIn || isLoggedIn !== "true") {
+                window.location.href = "login.html";
+            }
+        };
+
+        document.getElementById("logout").addEventListener("click", function(e) {
+            e.preventDefault();
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

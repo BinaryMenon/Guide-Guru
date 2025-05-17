@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Guide Guru Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif
+        }
+
+        body {
+            height: 100vh;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .login-wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .login-container {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 450px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            margin: 2rem 0;
+            
+            
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            width: 200px;
+            margin-bottom: 1rem;
+            height: 150px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        input:focus {
+            border-color: #0066cc;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 102, 204, 0.5);
+        }
+
+        .show-password {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            cursor: pointer;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0055aa;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .social-login {
+            margin-top: 1.5rem;
+        }
+
+        .social-login p {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .social-btn {
+            display: inline-block;
+            margin: 0 8px;
+            width: 40px;
+            height: 40px;
+            background-color: #eee;
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background-color: #ddd;
+            color: #000;
+        }
+
+        .login-footer {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .login-footer a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+    
+
+
+        @media (max-width: 600px) {
+            .login-container {
+                width: 90%;
+                padding: 1.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video id="video-background" autoplay loop muted>
+        <source src="/VI/Mytrip.mp4">
+    </video>
+
+    <div class="login-wrapper">
+        <div class="login-container">
+            <img src="/images/guide.png" alt="MyTrip.com Logo" class="logo">
+            <h1>Welcome Back!</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Email, Phone, or Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <span class="show-password" id="togglePassword">
+                        <i class="far fa-eye"></i>
+                    </span>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+
+            <div class="social-login">
+                <p>Or login with</p>
+                <div>
+                    <span class="social-btn" title="Google"><i class="fab fa-google"></i></span>
+                    <span class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></span>
+                    <span class="social-btn" title="Apple"><i class="fab fa-apple"></i></span>
+                </div>
+            </div>
+
+            <div class="login-footer">
+                <p>New to Guide Guru? <a href="#">Sign Up</a></p>
+                <p><a href="#">Forgot Password?</a></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Password toggle
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            const passwordInput = document.getElementById("password");
+            const icon = this.querySelector("i");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        });
+
+        // Login form handling
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+
+            if (username === "sid" && password === "12345") {
+                // Store login status in localStorage
+                localStorage.setItem("isLoggedIn", "true");
+                // Redirect to index.html
+                window.location.href = "index.html";
+            } else {
+                alert("Invalid username or password!");
+            }
+        });
+    </script>
+</body>
+</html>

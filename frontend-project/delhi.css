@@ -1,0 +1,406 @@
+/* Delhi Hero Section */
+.delhi-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), 
+                url('https://source.unsplash.com/random/1920x1080?delhi,red+fort') no-repeat center center;
+    background-size: cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Monument Elements Animation */
+.monument-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.monument {
+    position: absolute;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+    animation: monumentFloat 15s ease-in-out infinite;
+}
+
+.monument img {
+    width: 80px;
+    height: auto;
+}
+
+.qutub {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.india-gate {
+    top: 15%;
+    right: 15%;
+    animation-delay: 3s;
+}
+
+.lotus {
+    top: 30%;
+    right: 25%;
+    animation-delay: 6s;
+}
+
+@keyframes monumentFloat {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
+    50% { transform: translateY(-50px) scale(1.2); opacity: 1; }
+}
+
+/* Metro Animation */
+.metro-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.metro-line {
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, #FFD700 50%, rgba(0,0,0,0) 100%);
+    top: 70%;
+    animation: metroLinePulse 3s ease-in-out infinite;
+}
+
+.metro-train {
+    position: absolute;
+    display: flex;
+    top: 68%;
+    left: -200px;
+    animation: metroMove 15s linear infinite;
+}
+
+.metro-coach {
+    width: 60px;
+    height: 30px;
+    background: #FF4500;
+    margin-right: 5px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.metro-coach::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: #000;
+    bottom: -5px;
+}
+
+@keyframes metroMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 200px)); }
+}
+
+@keyframes metroLinePulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Rickshaw Animation */
+.rickshaw-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.rickshaw {
+    position: absolute;
+    color: #FF6347;
+    font-size: 2.5rem;
+    animation: rickshawMove 20s linear infinite;
+}
+
+.rickshaw-1 {
+    top: 60%;
+    left: -50px;
+    animation-delay: 0s;
+}
+
+.rickshaw-2 {
+    top: 65%;
+    left: -50px;
+    animation-delay: 5s;
+}
+
+@keyframes rickshawMove {
+    0% { transform: translateX(0) rotateY(0deg); }
+    49% { transform: translateX(calc(100vw + 50px)) rotateY(0deg); }
+    50% { transform: translateX(calc(100vw + 50px)) rotateY(180deg); }
+    100% { transform: translateX(0) rotateY(180deg); }
+}
+
+/* City Highlights */
+.city-highlights {
+    padding: 6rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #f9f9f9;
+}
+
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.highlight-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    background: white;
+    position: relative;
+}
+
+.highlight-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.highlight-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.highlight-card:hover img {
+    transform: scale(1.05);
+}
+
+.highlight-card h3 {
+    padding: 1.5rem 1rem 0.5rem;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.highlight-card p {
+    padding: 0 1rem 1.5rem;
+    color: #64748b;
+}
+
+/* Icons for highlights */
+.monument-icon, .food-icon, .market-icon {
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    background: #FF4500;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* River Section */
+.river-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(to bottom, #f8f9fa, #e3f2fd);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.river-content h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.river-content p {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+.river-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.river-wave {
+    position: absolute;
+    width: 200%;
+    height: 100px;
+    background: rgba(0, 150, 255, 0.1);
+    border-radius: 50%;
+    animation: waveFlow 15s linear infinite;
+}
+
+.wave-1 {
+    top: 60%;
+    left: -50%;
+    animation-delay: 0s;
+}
+
+.wave-2 {
+    top: 65%;
+    left: -50%;
+    animation-delay: 3s;
+    opacity: 0.7;
+}
+
+.wave-3 {
+    top: 70%;
+    left: -50%;
+    animation-delay: 6s;
+    opacity: 0.4;
+}
+
+@keyframes waveFlow {
+    0% { transform: translateX(0) rotate(0deg); }
+    100% { transform: translateX(50%) rotate(1deg); }
+}
+
+/* Transport Options */
+.transport-options {
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+}
+
+.transport-options h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.transport-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.transport-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.transport-card i {
+    font-size: 3rem;
+    color: #FF4500;
+    margin-bottom: 1rem;
+}
+
+.transport-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.transport-card p {
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+
+.view-btn {
+    padding: 0.8rem 1.5rem;
+    background-color: #FF4500;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background-color: #CC3700;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .monument img {
+        width: 50px !important;
+    }
+    
+    .rickshaw {
+        font-size: 1.8rem !important;
+    }
+}
